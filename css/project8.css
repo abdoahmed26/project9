@@ -1,0 +1,353 @@
+:root{
+    --s-color: #8b4c16;
+    --m-color: #e0d2bc;
+    --l-color: #f6f1e4;
+    --d-color: #262f38;
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+html{
+    scroll-behavior: smooth;
+}
+::-webkit-scrollbar{
+    width: 15px;
+}
+::-webkit-scrollbar-thumb{
+    background: var(--s-color);
+}
+::-webkit-scrollbar-track{
+    background: var(--l-color);
+}
+body{
+    font-family: 'Changa', sans-serif;
+    background-image: url("quranImg/white-bg.jpg");
+    background-size: contain;
+    background-attachment: fixed;
+    direction: rtl;
+}
+body.dark{
+    --s-color: black;
+    background-image: url("quranImg/bg4.png");
+}
+.up {
+    display: none;
+    padding: 2px 10px;
+    background-color: var(--s-color);
+    color: white;
+    z-index: 100;
+    position: fixed;
+    right: 20px;
+    bottom: 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+.cont {
+    position: sticky;
+    top: 0px;
+    z-index: 100;
+}
+.cont .aud{
+    
+    background-color: var(--s-color);
+    color: white;
+    text-align: center;
+    width: 95%;
+    margin: 0px auto;
+    padding: 15px;
+    margin: 10px auto 15px;
+    z-index: 20;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+.cont .aud audio{
+    width: 100%;
+}
+.cont .aud h2{
+    font-weight: 500;
+    font-size: 2rem;
+}
+.cont .aud .svg{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.cont .aud .svg div,
+.cont .aud .svg label{
+    margin: 10px 0px;
+    padding: 0px 8px 0px 10px;
+    border: 3px solid white;
+    text-align: center;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+body.dark .cont .aud .svg div,
+body.dark .cont .aud .svg label{
+    background-color: white;
+    color: var(--s-color);
+}
+.cont .aud .svg .forward{
+    padding: 0px 8px 0px 9px;
+}
+.cont .aud .svg .back{
+    padding: 0px 9px 0px 8px;
+}
+.cont .aud .svg .none,
+.cont .aud .svg #chec{
+    display: none;
+    font-size: 19px;
+    padding: 0px 2px 0px 0px;
+}
+nav {
+    padding: 15px 15px;
+    position: fixed;
+    left: -300px;
+    top: 50%;
+    width: 300px;
+    height: 380px;
+    z-index: 100;
+    text-align: center;
+    background-color: var(--l-color);
+    border: 1px solid var(--s-color);
+    border-radius: 5px;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+}
+nav h2{
+    color: var(--s-color);
+    font-weight: 500;
+}
+nav .select {
+    margin-bottom: 10px;
+}
+nav .select .sel {
+    background-color: var(--s-color);
+    color: var(--l-color);
+    width: 90%;
+    height: 35px;
+    font-size: 18px;
+    cursor: pointer;
+    outline: 0;
+    border: 0;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+nav ul li{
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    border: 2px solid var(--s-color);
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+nav ul li:hover {
+    border-color: var(--m-color);
+}
+nav ul li.black{
+    background-color: black;
+}
+nav ul li.white{
+    background-color: white;
+}
+nav ul li.wheat{
+    background-color: wheat;
+}
+nav .size {
+    margin-top: 10px;
+}
+nav .size .font-size{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+nav .size .font-size div {
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    color: var(--s-color);
+    font-size: 20px;
+    border: 2px solid var(--s-color);
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+.icon{
+    position: fixed;
+    left: 0px;
+    top: 22%;
+    background-color: var(--l-color);
+    color: var(--s-color);
+    font-size: 20px;
+    padding: 0px 3px;
+    border: 1px solid var(--s-color);
+    border-left: 0;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    width: fit-content;
+    cursor: pointer;
+    z-index: 100;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+}
+.icon .checkbox{
+    display: none;
+}
+.surahs{
+    width: 600px;
+    height: 100%;
+    padding-bottom: 15px;
+    max-width: 95%;
+    margin: 0px auto;
+    background-color: black;
+    color: white;
+    border: 2px solid var(--s-color);
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+.surahs .nameSur{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.surahs .nameSur img{
+    width: 95%;
+    margin: 15px auto 10px;
+}
+.surahs .nameSur h2{
+    font-family: 'Amiri', serif;
+    font-size: 2rem;
+    font-weight: 500;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    color: black !important;
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+}
+.surahs .sura {
+    font-family: 'Amiri', serif;
+    font-size: 2rem;
+    font-weight: 500;
+    width: 95%;
+    margin: 5px auto;
+    line-height: 1.6;
+}
+.surahs .explain .spanAll{
+    position: relative;
+}
+.surahs .explain .spanAll .ayaNum{
+    background-image: url("quranImg/ayah-num-2.png");
+    background-size: cover;
+    margin: 0px 10px;
+    width: 3rem;
+    height: 3rem;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3rem;
+}
+
+nav .goToAya{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+nav .goToAya .number{
+    background-color: var(--s-color);
+    color: white;
+    height: 30px;
+    padding: 10px 10px 10px 0px;
+    outline: 0;
+    border: 0;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+nav .goToAya .number::placeholder{
+    color: white;
+}
+nav .goToAya .go{
+    cursor: pointer;
+    height: 30px;
+    padding: 5px 10px;
+    outline: 0;
+    border: 0;
+    background-color: var(--m-color);
+    color: var(--s-color);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border: 1px solid var(--s-color);
+}
+@media(max-width:560px){
+    .surahs .sura,
+    .surahs .nameSur h2,
+    .cont .aud h2{
+        font-size: 1.5rem;
+    }
+    .surahs .explain .spanAll .ayaNum{
+        width: 2rem;
+        height: 2rem;
+        font-size: 1rem;
+    }
+    .surahs .nameSur img{
+        height: 3rem;
+    }
+}
+#text,
+.spanAll {
+    padding: 8px 0px;
+}
