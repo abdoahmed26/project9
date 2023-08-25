@@ -216,9 +216,9 @@ nav .size .font-size div {
     -o-border-radius: 5px;
 }
 .icon{
-    position: fixed;
-    left: 0px;
-    top: 22%;
+    position: absolute;
+    left: 100%;
+    top: 5%;
     background-color: var(--l-color);
     color: var(--s-color);
     font-size: 20px;
