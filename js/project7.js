@@ -165,11 +165,11 @@ checkbox.addEventListener("change",function(e){
     check = e.target.checked;
     if(check){
         nav.style.left = "0px";
-        icon.style.left = "300px"
+        icon.style.left = "100%";
     }
     else{
         nav.style.left = "-300px";
-        icon.style.left = "0px"
+        icon.style.left = "0px !important";
     }
 });
 

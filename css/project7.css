@@ -174,9 +174,9 @@ nav .two .readers li:hover{
     color: var(--m-color);
 }
 .icon{
-    position: fixed;
-    left: 0px;
-    top: 20%;
+    position: absolute;
+    left: 100%;
+    top: 5%;
     background-color: var(--s-color);
     color: var(--l-color);
     font-size: 20px;
