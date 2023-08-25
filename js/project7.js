@@ -115,7 +115,7 @@ function onSucc(p){
         console.log(infor);
         let city = infor.state;
         console.log(city)
-        fetch(` http://api.aladhan.com/v1/timingsByCity?country=${infor.country}&city=${city}&method=8`).then((resolve)=>{
+        fetch(`http://api.aladhan.com/v1/timingsByCity?country=${infor.country}&city=${city}&method=8`).then((resolve)=>{
             let myTime = resolve.json();
             return myTime;
         }).then((pray)=>{
