@@ -111,7 +111,9 @@ function onSucc(p){
     }).then((full)=>{
         return full.results[0].components;
     }).then((infor)=>{
-        fetch(`http://api.aladhan.com/v1/timingsByCity?city=${infor.state}&country=${infor.country}&method=8`).then((resolve)=>{
+        // console.log(infor);
+        let city = infor.state.split(" ");
+        fetch(`http://api.aladhan.com/v1/timingsByCity?city=${city.join("-")}&country=${infor.country}&method=8`).then((resolve)=>{
             let myTime = resolve.json();
             return myTime;
         }).then((pray)=>{
