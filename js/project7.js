@@ -95,7 +95,14 @@ function myTime(){
 setInterval(myTime,5);
 
 // pray time style
-navigator.geolocation.getCurrentPosition(onSucc,onErro)
+window.onload = function(){
+    if(navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(onSucc,onErro);
+    }
+    else{
+        console.log("Not Found Location");
+    }
+}
 function onSucc(p){
     let {latitude,longitude} = p.coords
     fetch(`https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=862c0220519a470584efd4527386c219`).then((res)=>{
