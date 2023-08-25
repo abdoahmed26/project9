@@ -127,7 +127,7 @@ function onErro(erro){
 // list of readers in navbar style
 async function getReaders(){
     try{
-        let data = await fetch("../js/_arabic.json");
+        let data = await fetch("https://abdoahmed26.github.io/api/arabic.json");
         let read = await data.json();
         for(let i=0;i<read.reciters.length;i++){
             let li = document.createElement("li");
