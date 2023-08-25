@@ -104,6 +104,7 @@ window.onload = function(){
     }
 }
 function onSucc(p){
+    console.log(p);
     let {latitude,longitude} = p.coords
     fetch(`https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=862c0220519a470584efd4527386c219`).then((res)=>{
         let data = res.json();
@@ -111,13 +112,14 @@ function onSucc(p){
     }).then((full)=>{
         return full.results[0].components;
     }).then((infor)=>{
-        // console.log(infor);
-        let city = infor.state.split(" ");
-        fetch(`http://api.aladhan.com/v1/timingsByCity?city=${city.join("-")}&country=${infor.country}&method=8`).then((resolve)=>{
+        console.log(infor);
+        let city = infor.state;
+        console.log(city)
+        fetch(` http://api.aladhan.com/v1/timingsByCity?country=${infor.country}&city=${city}&method=8`).then((resolve)=>{
             let myTime = resolve.json();
             return myTime;
         }).then((pray)=>{
-            // console.log(pray);
+            console.log(pray);
             far.innerHTML = pray.data.timings.Fajr;
             sun.innerHTML = pray.data.timings.Sunrise;
             duh.innerHTML = pray.data.timings.Dhuhr;
