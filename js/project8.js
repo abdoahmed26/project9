@@ -346,6 +346,10 @@ function goTo(number){
                 SpanAll[i].style.backgroundColor = "inherit";
             }
         }
+    }).catch((rej)=>{
+        console.log(rej);
+        num=1;
+        goTo(num);
     })
 }
 
