@@ -107,30 +107,20 @@ window.onload = function(){
 function onSucc(p){
     console.log(p);
     let {latitude,longitude} = p.coords
-    fetch(`https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=862c0220519a470584efd4527386c219`).then((res)=>{
-        let data = res.json();
-        return data;
-    }).then((full)=>{
-        return full.results[0].components;
-    }).then((infor)=>{
-        console.log(infor);
-        let city = infor.state;
-        console.log(city)
-        fetch(`https://api.aladhan.com/v1/calendar/${date.getFullYear()}?latitude=${latitude}&longitude=${longitude}`).then((resolve)=>{
-            let myTime = resolve.json();
-            return myTime;
-        }).then((pray)=>{
-            let month = date.getMonth();
-            let day = date.getDate();
-            let time = pray.data[month+1][day];
-            console.log(pray.data);
-            far.innerHTML = time.timings.Fajr.slice(0,5);
-            sun.innerHTML = time.timings.Sunrise.slice(0,5);
-            duh.innerHTML = time.timings.Dhuhr.slice(0,5);
-            asr.innerHTML = time.timings.Asr.slice(0,5);
-            mug.innerHTML = time.timings.Maghrib.slice(0,5);
-            ash.innerHTML = time.timings.Isha.slice(0,5);
-        })
+    fetch(`https://api.aladhan.com/v1/calendar/${date.getFullYear()}?latitude=${latitude}&longitude=${longitude}`).then((resolve)=>{
+        let myTime = resolve.json();
+        return myTime;
+    }).then((pray)=>{
+        let month = date.getMonth();
+        let day = date.getDate();
+        let time = pray.data[month+1][day];
+        console.log(pray.data);
+        far.innerHTML = time.timings.Fajr.slice(0,5);
+        sun.innerHTML = time.timings.Sunrise.slice(0,5);
+        duh.innerHTML = time.timings.Dhuhr.slice(0,5);
+        asr.innerHTML = time.timings.Asr.slice(0,5);
+        mug.innerHTML = time.timings.Maghrib.slice(0,5);
+        ash.innerHTML = time.timings.Isha.slice(0,5);
     })
 }
 function onErro(erro){
