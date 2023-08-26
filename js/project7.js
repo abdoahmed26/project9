@@ -296,6 +296,9 @@ document.addEventListener("click",function(e){
                 linkListen[i].setAttribute("data",`${e.target.getAttribute("value")}/${i+1}.mp3`);
             }
         }
+        nav.style.left = "-300px";
+        icon.style.left = "0px !important";
+        checkbox.checked = false;
     }
 });
 
