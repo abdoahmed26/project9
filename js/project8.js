@@ -222,8 +222,7 @@ nameOfSurah();
 let nameOfRead = "ahmedajamy";
 let arrayAyas =[];
 let Chec = false;
-checkBox.addEventListener("change",function(e){
-    Chec = e.target.checked;
+function auto(){
     if(Chec){
         let numberOfSur = window.localStorage.getItem("numOfSurah");
         fetch(`https://quran-api-id.vercel.app/surahs/${numberOfSur}/ayahs`).then((res)=>{
@@ -301,11 +300,17 @@ checkBox.addEventListener("change",function(e){
     else{
         audio.pause();
     }
+}
+checkBox.addEventListener("change",function(e){
+    Chec = e.target.checked;
+    auto();
 })
 
 // choose reader and change name of reader in div read
 sel.onchange = function(){
     nameOfRead = sel.value;
+    Chec = true;
+    auto();
     for(let i=0;i<sel.children.length;i++){
         if(sel.children[i].getAttribute("value")===sel.value){
             read.innerHTML = sel.children[i].innerHTML;
