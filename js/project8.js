@@ -246,7 +246,7 @@ function auto(){
                     changeAya(index);
                 }
                 else{
-                    e.target.checked = false;
+                    checkBox.checked = false;
                     index=0;
                     audio.pause();
                 }
