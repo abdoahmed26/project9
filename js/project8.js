@@ -314,13 +314,21 @@ sel.onchange = function(){
 }
 
 // go to ayah and listen
-go.onclick = function(){
+function goTo(number){
     let numberOfSur = window.localStorage.getItem("numOfSurah");
-    fetch(`https://quran-api-id.vercel.app/surahs/${numberOfSur}/ayahs/${number.value}`).then((res)=>{
+    fetch(`https://quran-api-id.vercel.app/surahs/${numberOfSur}/ayahs/${number}`).then((res)=>{
         let sound = res.json();
         return sound;
     }).then((full)=>{
         audio.src = full.audio[nameOfRead];
+        forward.onclick = function(){
+            num++;
+            goTo(num);
+        }
+        back.onclick = function(){
+            num--;
+            goTo(num);
+        }
         let spanId = document.querySelectorAll("#text");
         let SpanAll = document.querySelectorAll(".spanAll");
         for(let i=0;i<spanId.length;i++){
@@ -334,30 +342,28 @@ go.onclick = function(){
             }
         }
     })
+}
+
+let num;
+audio.addEventListener("ended",function(){
+    +(num)++;
+    if(num){
+        goTo(num);
+    }
+})
+
+go.onclick = function(){
+    num = +number.value;
+    goTo(num);
+    checkBox.checked = true;
     number.value = "";
 }
 
 // click on ayah to listen
 document.addEventListener("click",function(e){
     if(e.target.id === "text"){
-        let numberOfSur = window.localStorage.getItem("numOfSurah");
-        fetch(`https://quran-api-id.vercel.app/surahs/${numberOfSur}/ayahs/${e.target.className}`).then((res)=>{
-            let sound = res.json();
-            return sound;
-        }).then((full)=>{
-            audio.src = full.audio[nameOfRead];
-            let spanId = document.querySelectorAll("#text");
-            let SpanAll = document.querySelectorAll(".spanAll");
-            for(let i=0;i<spanId.length;i++){
-                if(i===(full.number.inSurah)-1){
-                    spanId[i].style.backgroundColor = "#8b4d169b";
-                    SpanAll[i].style.backgroundColor = "#8b4d169b";
-                }
-                else{
-                    spanId[i].style.backgroundColor = "inherit";
-                    SpanAll[i].style.backgroundColor = "inherit";
-                }
-            }
-        })
+        num = +e.target.className;
+        goTo(num);
+        checkBox.checked = true;
     }
 })
