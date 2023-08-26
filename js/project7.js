@@ -115,17 +115,17 @@ function onSucc(p){
         console.log(infor);
         let city = infor.state;
         console.log(city)
-        fetch(`http://api.aladhan.com/v1/timingsByCity?country=${infor.country}&city=${city}&method=8`).then((resolve)=>{
+        fetch(`http://api.aladhan.com/v1/calendarByCity?city=${city}&country=${infor.country}&method=5&month=8&year=2023`).then((resolve)=>{
             let myTime = resolve.json();
             return myTime;
         }).then((pray)=>{
             console.log(pray);
-            far.innerHTML = pray.data.timings.Fajr;
-            sun.innerHTML = pray.data.timings.Sunrise;
-            duh.innerHTML = pray.data.timings.Dhuhr;
-            asr.innerHTML = pray.data.timings.Asr;
-            mug.innerHTML = pray.data.timings.Maghrib;
-            ash.innerHTML = pray.data.timings.Isha;
+            far.innerHTML = pray.data[25].timings.Fajr.slice(0,5);
+            sun.innerHTML = pray.data[25].timings.Sunrise.slice(0,5);
+            duh.innerHTML = pray.data[25].timings.Dhuhr.slice(0,5);
+            asr.innerHTML = pray.data[25].timings.Asr.slice(0,5);
+            mug.innerHTML = pray.data[25].timings.Maghrib.slice(0,5);
+            ash.innerHTML = pray.data[25].timings.Isha.slice(0,5);
         })
     })
 }
