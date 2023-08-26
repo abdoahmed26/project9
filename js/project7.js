@@ -95,6 +95,7 @@ function myTime(){
 setInterval(myTime,5);
 
 // pray time style
+let date = new Date();
 window.onload = function(){
     if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition(onSucc,onErro);
@@ -115,17 +116,20 @@ function onSucc(p){
         console.log(infor);
         let city = infor.state;
         console.log(city)
-        fetch(`http://api.aladhan.com/v1/calendarByCity?city=${city}&country=${infor.country}&method=5&month=8&year=2023`).then((resolve)=>{
+        fetch(`https://api.aladhan.com/v1/calendar/${date.getFullYear()}?latitude=${latitude}&longitude=${longitude}`).then((resolve)=>{
             let myTime = resolve.json();
             return myTime;
         }).then((pray)=>{
-            console.log(pray);
-            far.innerHTML = pray.data[25].timings.Fajr.slice(0,5);
-            sun.innerHTML = pray.data[25].timings.Sunrise.slice(0,5);
-            duh.innerHTML = pray.data[25].timings.Dhuhr.slice(0,5);
-            asr.innerHTML = pray.data[25].timings.Asr.slice(0,5);
-            mug.innerHTML = pray.data[25].timings.Maghrib.slice(0,5);
-            ash.innerHTML = pray.data[25].timings.Isha.slice(0,5);
+            let month = date.getMonth();
+            let day = date.getDate();
+            let time = pray.data[month+1][day];
+            console.log(pray.data);
+            far.innerHTML = time.timings.Fajr.slice(0,5);
+            sun.innerHTML = time.timings.Sunrise.slice(0,5);
+            duh.innerHTML = time.timings.Dhuhr.slice(0,5);
+            asr.innerHTML = time.timings.Asr.slice(0,5);
+            mug.innerHTML = time.timings.Maghrib.slice(0,5);
+            ash.innerHTML = time.timings.Isha.slice(0,5);
         })
     })
 }
