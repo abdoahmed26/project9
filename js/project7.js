@@ -299,6 +299,9 @@ document.addEventListener("click",function(e){
         nav.style.left = "-300px";
         icon.style.left = "0px !important";
         checkbox.checked = false;
+        checkBox.checked = false;
+        run.style.display = "none";
+        Stop.style.display = "inline-block";
     }
 });
 
