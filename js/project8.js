@@ -100,6 +100,7 @@ if(window.localStorage.getItem("back")|| window.localStorage.getItem("color")){
 
 // increase size of font of div of surah
 inc.onclick = function(){
+    let ayaNum = document.querySelectorAll(".ayaNum");
     if(font.innerHTML==="25"){
         inc.style.opacity ="0.7";
     }
@@ -110,6 +111,11 @@ inc.onclick = function(){
             if(font.innerHTML==="20"){
                 sur.style.fontSize = "2rem";
                 nameOf.style.fontSize = "2rem";
+                for(let i=0;i<ayaNum.length;i++){
+                    ayaNum[i].style.width = "2.5rem";
+                    ayaNum[i].style.height = "2.5rem";
+                    ayaNum[i].style.fontSize = "1rem";
+                }
             }
             else{
                 sur.style.fontSize = "1.5rem";
@@ -134,6 +140,7 @@ inc.onclick = function(){
 
 // decrease size of font of div of surah
 dic.onclick = function(){
+    let ayaNum = document.querySelectorAll(".ayaNum");
     if(font.innerHTML==="15"){
         dic.style.opacity ="0.7";
     }
@@ -144,6 +151,11 @@ dic.onclick = function(){
             if(font.innerHTML==="25"){
                 sur.style.fontSize = "1.5rem";
                 nameOf.style.fontSize = "1.5rem";
+                for(let i=0;i<ayaNum.length;i++){
+                    ayaNum[i].style.width = "2rem";
+                    ayaNum[i].style.height = "2rem";
+                    ayaNum[i].style.fontSize = "0.8rem";
+                }
             }
             else{
                 sur.style.fontSize = "1rem";

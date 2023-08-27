@@ -242,6 +242,7 @@ nav .size .font-size div {
 .surahs{
     width: 600px;
     height: 100%;
+    text-align: justify;
     padding-bottom: 15px;
     max-width: 95%;
     margin: 0px auto;
@@ -291,6 +292,7 @@ nav .size .font-size div {
 }
 .surahs .explain .spanAll .ayaNum{
     background-image: url("quranImg/ayah-num-2.png");
+    vertical-align: middle;
     background-size: cover;
     margin: 0px 10px;
     width: 3rem;
@@ -341,7 +343,7 @@ nav .goToAya .go{
     .surahs .explain .spanAll .ayaNum{
         width: 2rem;
         height: 2rem;
-        font-size: 1rem;
+        font-size: 0.8rem;
     }
     .surahs .nameSur img{
         height: 3rem;
