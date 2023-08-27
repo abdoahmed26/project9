@@ -113,7 +113,7 @@ function onSucc(p){
     }).then((pray)=>{
         let month = date.getMonth();
         let day = date.getDate();
-        let time = pray.data[month+1][day];
+        let time = pray.data[month+1][day-1];
         console.log(pray.data);
         far.innerHTML = time.timings.Fajr.slice(0,5);
         sun.innerHTML = time.timings.Sunrise.slice(0,5);
