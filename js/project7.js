@@ -23,6 +23,8 @@ let forward = document.querySelector(".forward");
 let mode = document.querySelector("#mode");
 let light = document.querySelector(".light");
 let moon = document.querySelector(".moon");
+let divCir = document.querySelector(".loadingio-spinner-rolling-o2kacp68per");
+let label = document.querySelector(".run");
 
 // dark mode
 let myMode = false;
@@ -270,11 +272,25 @@ async function surahs(){
 }
 surahs();
 
+function aperr(){
+    divCir.classList.remove("disapper");
+    divCir.classList.add("see");
+    label.classList.add("disapper");
+}
+function disap(){
+    label.classList.remove("disapper");
+    label.classList.add("see");
+    divCir.classList.remove("see");
+    divCir.classList.add("disapper");
+}
+
 // click on listen key
 document.addEventListener("click",function(e){
     if(e.target.className === "linkListen"){
+        aperr();
         audio.src = e.target.getAttribute("data");
         audio.play();
+        disap();
         checkBox.checked = true;
     }
 });

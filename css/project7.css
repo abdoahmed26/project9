@@ -241,7 +241,7 @@ nav .two .readers li:hover{
     justify-content: center;
     gap: 20px;
 }
-.cont .aud .svg div,
+.cont .aud .svg > div,
 .cont .aud .svg label{
     margin: 10px 0px;
     padding: 0px 8px 0px 10px;
@@ -255,7 +255,7 @@ nav .two .readers li:hover{
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
 }
-body.dark .cont .aud .svg div,
+body.dark .cont .aud .svg > div,
 body.dark .cont .aud .svg label{
     background-color: white;
     color: var(--s-color);
@@ -271,6 +271,51 @@ body.dark .cont .aud .svg label{
     display: none;
     font-size: 19px;
     padding: 0px 2px 0px 0px;
+}
+@keyframes ldio-yttzuw9w4y {
+    0% { transform: translate(-50%,-50%) rotate(0deg); }
+    100% { transform: translate(-50%,-50%) rotate(360deg); }
+}
+.ldio-yttzuw9w4y div {
+    position: relative;
+    width: 33px;
+    height: 33px;
+    border: 3px solid var(--m-color);
+    border-top-color: transparent;
+    border-radius: 50%;
+}
+.ldio-yttzuw9w4y div {
+    animation: ldio-yttzuw9w4y 1s linear infinite;
+    top: 19px;
+    left: 26px
+}
+.loadingio-spinner-rolling-o2kacp68per {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    background: inherit;
+    border: 0px !important;
+}
+body.dark .cont .aud .svg .loadingio-spinner-rolling-o2kacp68per{
+    background: inherit;
+}
+.ldio-yttzuw9w4y {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform: translateZ(0) scale(1);
+    backface-visibility: hidden;
+    transform-origin: 0 0; /*see note above*/
+}
+.ldio-yttzuw9w4y div { 
+    box-sizing: content-box;
+}
+.cont .aud .svg .disapper{
+    display: none;
+}
+.cont .aud .svg .see{
+    display: block;
 }
 .cont .listOfSurahs{
     border: 2px solid var(--s-color);

@@ -21,6 +21,8 @@ let back = document.querySelector(".back");
 let forward = document.querySelector(".forward");
 let explain = document.querySelector(".explain");
 let NameOfS = document.querySelector(".name");
+let nameSur = document.querySelector(".nameSur");
+let divCir = document.querySelector(".loadingio-spinner-rolling-o2kacp68per");
 
 // dark mode
 if(window.localStorage.getItem("mode")){
@@ -176,12 +178,25 @@ dic.onclick = function(){
     }
 }
 
+function apper(){
+    divCir.classList.remove("disapper");
+}
+function disNone(){
+    divCir.classList.add("disapper");
+}
+
 // take ayahs of surah and put them in div explain
 async function getSurah(){
+    apper();
     let number = window.localStorage.getItem("numOfSurah");
     try{
+        nameOfSurah();
         let myData = await fetch(`https://quran-api-id.vercel.app/surahs/${number}`);
         let result = await myData.json();
+        disNone();
+        let myImg = document.createElement("img");
+        myImg.src = "../quranImg/surah-header.png";
+        nameSur.prepend(myImg);
         if(number != "1"){
             let spanP = document.createElement("p");
             spanP.style.textAlign = "center";
@@ -228,7 +243,6 @@ async function nameOfSurah(){
         console.log(rej);
     }
 }
-nameOfSurah();
 
 // read of ayahs 
 let nameOfRead = "ahmedajamy";
