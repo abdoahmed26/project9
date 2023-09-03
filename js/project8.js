@@ -192,8 +192,8 @@ async function getSurah(){
     try{
         let myData = await fetch(`https://quran-api-id.vercel.app/surahs/${number}`);
         let result = await myData.json();
-        nameOfSurah();
         disNone();
+        nameOfSurah();
         let myImg = document.createElement("img");
         myImg.src = "quranImg/surah-header.png";
         nameSur.prepend(myImg);
@@ -232,11 +232,11 @@ getSurah();
 async function nameOfSurah(){
     let numberOfSur = window.localStorage.getItem("numOfSurah");
     try{
-        let sound = await fetch("https://quran-endpoint.vercel.app/quran");
+        let sound = await fetch("https://raw.githubusercontent.com/penggguna/QuranJSON/master/quran.json");
         let result = await sound.json();
-        for(let i=0;i<result.data.length;i++){
-            if(+numberOfSur === result.data[i].number){
-                NameOfS.innerHTML = result.data[i].asma.ar.long;
+        for(let i=0;i<result.length;i++){
+            if(+numberOfSur === result[i].number_of_surah){
+                NameOfS.innerHTML = `سورة ${result[i].name_translations.ar}`;
             }
         }
     }catch(rej){
