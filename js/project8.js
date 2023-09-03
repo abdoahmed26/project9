@@ -190,9 +190,9 @@ async function getSurah(){
     apper();
     let number = window.localStorage.getItem("numOfSurah");
     try{
-        nameOfSurah();
         let myData = await fetch(`https://quran-api-id.vercel.app/surahs/${number}`);
         let result = await myData.json();
+        nameOfSurah();
         disNone();
         let myImg = document.createElement("img");
         myImg.src = "quranImg/surah-header.png";
