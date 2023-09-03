@@ -195,7 +195,7 @@ async function getSurah(){
         let result = await myData.json();
         disNone();
         let myImg = document.createElement("img");
-        myImg.src = "../quranImg/surah-header.png";
+        myImg.src = "quranImg/surah-header.png";
         nameSur.prepend(myImg);
         if(number != "1"){
             let spanP = document.createElement("p");
