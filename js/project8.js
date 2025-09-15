@@ -192,7 +192,7 @@ async function getSurah(){
     try{
         let myData = await fetch(`https://quran-api-id.vercel.app/surah/${number}`);
         let result = await myData.json();
-        console.log(result);
+        // console.log(result);
         disNone();
         nameOfSurah();
         let myImg = document.createElement("img");
@@ -202,11 +202,12 @@ async function getSurah(){
             let spanP = document.createElement("p");
             spanP.style.textAlign = "center";
             spanP.style.marginBottom = "5px"
-            let spanPText = document.createTextNode(`${result.bismillah.arab}`);
+            let spanPText = document.createTextNode(`${result.data.preBismillah.text.arab}`);
             spanP.appendChild(spanPText)
             explain.appendChild(spanP);
         }
         const verses = result.data.verses;
+        console.log(verses[0].text);
         for(let i=0;i<verses.length;i++){
             let span = document.createElement("span");
             let spanText = document.createTextNode(`${verses[i].text.arab}`);
@@ -257,7 +258,7 @@ function auto(){
             let sound = res.json();
             return sound;
         }).then((full)=>{
-            console.log(full);
+            // console.log(full);
             arrayAyas=[];
             const verses = full.data.verses;
             for(let i=0;i<verses.length;i++){
