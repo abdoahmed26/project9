@@ -190,8 +190,9 @@ async function getSurah(){
     apper();
     let number = window.localStorage.getItem("numOfSurah");
     try{
-        let myData = await fetch(`https://quran-api-id.vercel.app/surahs/${number}`);
+        let myData = await fetch(`https://quran-api-id.vercel.app/surah/${number}`);
         let result = await myData.json();
+        console.log(result);
         disNone();
         nameOfSurah();
         let myImg = document.createElement("img");
@@ -205,18 +206,19 @@ async function getSurah(){
             spanP.appendChild(spanPText)
             explain.appendChild(spanP);
         }
-        for(let i=0;i<result.ayahs.length;i++){
+        const verses = result.data.verses;
+        for(let i=0;i<verses.length;i++){
             let span = document.createElement("span");
-            let spanText = document.createTextNode(`${result.ayahs[i].arab}`);
+            let spanText = document.createTextNode(`${verses[i].text.arab}`);
             span.id = `text`;
-            span.className = `${result.ayahs[i].number.inSurah}`;
+            span.className = `${verses[i].number.inSurah}`;
             span.appendChild(spanText);
             let spanAll = document.createElement("span");
             spanAll.className = "spanAll";
             spanAll.id = `${i}`;
             let aya = document.createElement("span");
             aya.className = "ayaNum";
-            let ayaText = document.createTextNode(`${result.ayahs[i].number.inSurah}`);
+            let ayaText = document.createTextNode(`${verses[i].number.inSurah}`);
             aya.appendChild(ayaText);
             spanAll.appendChild(aya);
             explain.appendChild(span);
@@ -251,17 +253,19 @@ let Chec = false;
 function auto(){
     if(Chec){
         let numberOfSur = window.localStorage.getItem("numOfSurah");
-        fetch(`https://quran-api-id.vercel.app/surahs/${numberOfSur}/ayahs`).then((res)=>{
+        fetch(`https://quran-api-id.vercel.app/surah/${numberOfSur}`).then((res)=>{
             let sound = res.json();
             return sound;
         }).then((full)=>{
+            console.log(full);
             arrayAyas=[];
-            for(let i=0;i<full.length;i++){
-                arrayAyas.push(full[i].audio);
+            const verses = full.data.verses;
+            for(let i=0;i<verses.length;i++){
+                arrayAyas.push(verses[i].audio.secondary[0]);
             }
             let index=0;
             for(let j=0;j<arrayAyas.length-1;j++){
-                if(audio.src === arrayAyas[j][nameOfRead]){
+                if(audio.src === arrayAyas[j]){
                     index = j;
                 }
             }
@@ -278,7 +282,7 @@ function auto(){
                 }
             })
             function changeAya(num){
-                audio.src = arrayAyas[num][nameOfRead];
+                audio.src = arrayAyas[num];
                 let spanId = document.querySelectorAll("#text");
                 let SpanAll = document.querySelectorAll(".spanAll");
                 for(let i=0;i<spanId.length;i++){
@@ -296,8 +300,8 @@ function auto(){
                 let spanId = document.querySelectorAll("#text");
                 let SpanAll = document.querySelectorAll(".spanAll");
                 for(let i=0;i<arrayAyas.length;i++){
-                    if(audio.src === arrayAyas[i][nameOfRead]){
-                        audio.src = arrayAyas[i-1][nameOfRead];
+                    if(audio.src === arrayAyas[i]){
+                        audio.src = arrayAyas[i-1];
                         spanId[i-1].style.backgroundColor = "#8b4d169b";
                         SpanAll[i-1].style.backgroundColor = "#8b4d169b";
                         spanId[i].style.backgroundColor = "inherit";
@@ -310,8 +314,8 @@ function auto(){
                 let spanId = document.querySelectorAll("#text");
                 let SpanAll = document.querySelectorAll(".spanAll");
                 for(let i=0;i<arrayAyas.length;i++){
-                    if(audio.src === arrayAyas[i][nameOfRead]){
-                        audio.src = arrayAyas[i+1][nameOfRead];
+                    if(audio.src === arrayAyas[i]){
+                        audio.src = arrayAyas[i+1];
                         spanId[i+1].style.backgroundColor = "#8b4d169b";
                         SpanAll[i+1].style.backgroundColor = "#8b4d169b";
                         spanId[i].style.backgroundColor = "inherit";
@@ -347,11 +351,13 @@ sel.onchange = function(){
 // go to ayah and listen
 function goTo(number){
     let numberOfSur = window.localStorage.getItem("numOfSurah");
-    fetch(`https://quran-api-id.vercel.app/surahs/${numberOfSur}/ayahs/${number}`).then((res)=>{
+    fetch(`https://quran-api-id.vercel.app/surah/${numberOfSur}/${number}`).then((res)=>{
         let sound = res.json();
         return sound;
     }).then((full)=>{
-        audio.src = full.audio[nameOfRead];
+        // console.log(full);
+        audio.src = full.data.audio.secondary[0];
+        audio.play();
         forward.onclick = function(){
             num++;
             goTo(num);
@@ -363,7 +369,7 @@ function goTo(number){
         let spanId = document.querySelectorAll("#text");
         let SpanAll = document.querySelectorAll(".spanAll");
         for(let i=0;i<spanId.length;i++){
-            if(i===(full.number.inSurah)-1){
+            if(i===(full.data.number.inSurah)-1){
                 spanId[i].style.backgroundColor = "#8b4d169b";
                 SpanAll[i].style.backgroundColor = "#8b4d169b";
             }
