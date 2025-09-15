@@ -190,7 +190,8 @@ async function getSurah(){
     apper();
     let number = window.localStorage.getItem("numOfSurah");
     try{
-        let myData = await fetch(`https://quran-api-id.vercel.app/surah/${number}`);
+        let url = "https://quran-api-id.vercel.app/surah/"+number;
+        let myData = await fetch(url);
         let result = await myData.json();
         // console.log(result);
         disNone();
@@ -254,7 +255,8 @@ let Chec = false;
 function auto(){
     if(Chec){
         let numberOfSur = window.localStorage.getItem("numOfSurah");
-        fetch(`https://quran-api-id.vercel.app/surah/${numberOfSur}`).then((res)=>{
+        let url = "https://quran-api-id.vercel.app/surah/"+numberOfSur;
+        fetch(url).then((res)=>{
             let sound = res.json();
             return sound;
         }).then((full)=>{
@@ -352,7 +354,8 @@ sel.onchange = function(){
 // go to ayah and listen
 function goTo(number){
     let numberOfSur = window.localStorage.getItem("numOfSurah");
-    fetch(`https://quran-api-id.vercel.app/surah/${numberOfSur}/${number}`).then((res)=>{
+    let url = "https://quran-api-id.vercel.app/surah/"+numberOfSur+"/"+number;
+    fetch(url).then((res)=>{
         let sound = res.json();
         return sound;
     }).then((full)=>{
